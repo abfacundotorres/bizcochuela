@@ -737,14 +737,24 @@ function setStatus(online) {
 // ── Fetch ───────────────────────────────────────────────────────
 
 function buildHistoryPayload() {
-  return history.slice(-HISTORY_LIMIT).map(t => ({
-    role:  t.role,
-    parts: [{
-      text: isDocumentText(t.parts[0].text)
-        ? '[documento/período generado]'
-        : t.parts[0].text.slice(0, 400),
-    }],
-  }));
+  return history.slice(-HISTORY_LIMIT).map(t => {
+    const text = t.parts[0].text;
+    let truncated;
+    if (isDocumentText(text)) {
+      // Documentos: solo el título para que el modelo sepa qué generó
+      const titleMatch = text.match(/\[TITULO\]\s*(.+)/);
+      truncated = titleMatch
+        ? `[documento generado: ${titleMatch[1].trim()}]`
+        : '[documento/período generado]';
+    } else if (t.role === 'user') {
+      // Respuestas del docente: completas hasta 1200 chars
+      truncated = text.slice(0, 1200);
+    } else {
+      // Respuestas del bot (preguntas del wizard): hasta 600 chars
+      truncated = text.slice(0, 600);
+    }
+    return { role: t.role, parts: [{ text: truncated }] };
+  });
 }
 
 function isRetryable(err) {
