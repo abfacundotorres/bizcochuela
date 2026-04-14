@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="Bizcochuela — Asistente pedagógica para docentes y familias de primaria en Córdoba">
 <meta name="theme-color" content="#D95F1A">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://i.imgur.com data:; connect-src https://bizcochuela.abfacundotorres.workers.dev;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://i.imgur.com data:; connect-src https://bizcochuela.abfacundotorres.workers.dev https://api.groq.com;">
 <title>Bizcochuela — Asistente Pedagógica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,7 +179,7 @@
     </div>
     <div class="header-text">
       <div class="header-name">Bizcochuela</div>
-      <div class="header-sub">Asistente pedagógica de docentes y familias · Primaria Córdoba</div>
+      <div class="header-sub">Asistente pedagógica · Docentes y directivos · Primaria Córdoba</div>
     </div>
     <div class="status-badge online" id="statusBadge">
       <div class="status-dot"></div>
@@ -210,14 +210,15 @@
       <div class="bubble-wrap">
         <div class="bubble">
           <p>¡Hola! Soy <strong>Bizcochuela</strong> 🐾</p>
-          <p>¿Sos docente o acompañás a tu hijo/a en casa?</p>
+          <p>¿Con quién tengo el gusto?</p>
         </div>
       </div>
     </div>
 
     <div class="suggestions" id="suggestions">
       <button class="chip" onclick="sendSuggestion('Soy docente')">Soy docente</button>
-      <button class="chip" onclick="sendSuggestion('Soy papá o mamá')">Soy padre/madre</button>
+      <button class="chip" onclick="sendSuggestion('Soy directivo')">Soy directivo/a</button>
+      <button class="chip" onclick="sendSuggestion('Soy del equipo de conducción')">Equipo de conducción</button>
     </div>
 
     <div class="typing-row" id="typingRow">
