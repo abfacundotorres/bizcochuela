@@ -965,11 +965,10 @@ function resetChat() {
 
 // ── PIN de acceso ───────────────────────────────────────────────
 
-async function submitPin() {
+function submitPin() {
   const pinInput = document.getElementById('pinInput');
   const pinError = document.getElementById('pinError');
-  const pinBtn   = document.getElementById('pinBtn');
-  const pin      = pinInput.value.trim().toUpperCase();
+  const pin = pinInput.value.trim().toUpperCase();
 
   if (!pin || pin.length < 4) {
     pinError.textContent = 'Ingresá un código válido.';
@@ -977,38 +976,12 @@ async function submitPin() {
     return;
   }
 
-  // Validar contra el Worker antes de mostrar el chat
-  pinBtn.textContent = 'Verificando…';
-  pinBtn.disabled    = true;
-  pinError.textContent = '';
-
-  try {
-    const res = await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'ping', history: [], pin }),
-    });
-    if (res.status === 403) {
-      pinError.textContent = 'Código incorrecto. Revisá con tu coordinador.';
-      pinInput.value = '';
-      pinInput.focus();
-      return;
-    }
-    // Cualquier otro status (200, 502, etc.) = PIN válido o Worker sin PIN
-    sessionPin = pin;
-    document.getElementById('pinScreen').style.display = 'none';
-    document.getElementById('mainPage').style.display  = 'flex';
-    inputEl.focus();
-  } catch {
-    // Sin conexión — entrar igual, el Worker validará después
-    sessionPin = pin;
-    document.getElementById('pinScreen').style.display = 'none';
-    document.getElementById('mainPage').style.display  = 'flex';
-    inputEl.focus();
-  } finally {
-    pinBtn.textContent = 'Ingresar';
-    pinBtn.disabled    = false;
-  }
+  // Guardar PIN — el Worker lo valida en cada request
+  // Si es incorrecto, el primer mensaje del chat mostrará el error
+  sessionPin = pin;
+  document.getElementById('pinScreen').style.display = 'none';
+  document.getElementById('mainPage').style.display  = 'flex';
+  inputEl.focus();
 }
 
 // Enter en el campo PIN
