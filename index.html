@@ -458,10 +458,8 @@ function parseDocumentContent(raw) {
   // Normalizar: unir líneas donde la marca está sola y el contenido viene en la siguiente
   // Ej: "[LISTA]\nContenido" → "[LISTA] Contenido"
   const normalized = raw
-    .replace(/\[PERIODO_\d\]\s*/g, '')  // quitar marcas de período
-    .replace(/(\[(LISTA|TEXTO|CAMPO|SECCION|SUBSECCION|TITULO)\])\s*
-\s*(?!\[)/gm, '$1 ')
-    .replace(/^\s*[-•]\s*/gm, '[LISTA] ');  // convertir guiones/bullets en [LISTA]
+    .replace(/\[PERIODO_\d\]\s*/g, '')
+    .replace(/^\s*[-•]\s*/gm, '[LISTA] ');
 
   const lines = normalized.split('\n');
   const documents = [];
