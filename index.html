@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="Bizcochuela — Asistente pedagógica para docentes y familias de primaria en Córdoba">
+<meta name="description" content="Aula Clara — Asistente pedagógica para docentes y directivos de primaria en Córdoba">
 <meta name="theme-color" content="#D95F1A">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://i.imgur.com data:; connect-src https://bizcochuela.abfacundotorres.workers.dev https://api.groq.com;">
-<title>Bizcochuela — Asistente Pedagógica</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://i.imgur.com data:; connect-src https://aulaclara.abfacundotorres.workers.dev https://api.groq.com;">
+<title>Aula Clara — Asistente Pedagógica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -145,8 +145,8 @@
     border-radius:24px; padding:32px 28px; max-width:360px; width:100%;
     text-align:center; box-shadow:0 4px 24px rgba(61,31,10,0.08);
   ">
-    <div style="font-size:48px; margin-bottom:16px;">🐾</div>
-    <div style="font-family:'Fraunces',Georgia,serif; font-size:1.4rem; font-weight:600; color:var(--brown-dark); margin-bottom:8px;">Bizcochuela</div>
+    <div style="font-size:48px; margin-bottom:16px;">👩‍🏫</div>
+    <div style="font-family:'Fraunces',Georgia,serif; font-size:1.4rem; font-weight:600; color:var(--brown-dark); margin-bottom:8px;">Aula Clara</div>
     <div style="font-size:13px; color:var(--brown-light); margin-bottom:24px; line-height:1.5;">Ingresá el código de acceso<br>que te dio tu coordinador educativo</div>
     <input id="pinInput" type="text" placeholder="Ej: JESUSMARIA2026"
       maxlength="20" autocomplete="off" spellcheck="false"
@@ -174,11 +174,11 @@
 <div class="page" id="mainPage" style="display:none;">
   <header class="header" role="banner">
     <div class="avatar-ring" id="avatarRing">
-      <img src="https://i.imgur.com/TWNG5QL.png" alt="Bizcochuela"
-           onerror="this.style.display='none'; document.getElementById('avatarRing').textContent='🐾';">
+      <img src="https://i.imgur.com/oXWWZA8.png" alt="Aula Clara"
+           onerror="this.style.display='none'; document.getElementById('avatarRing').textContent='👩‍🏫';">
     </div>
     <div class="header-text">
-      <div class="header-name">Bizcochuela</div>
+      <div class="header-name">Aula Clara</div>
       <div class="header-sub">Asistente pedagógica · Docentes y directivos · Primaria Córdoba</div>
     </div>
     <div class="status-badge online" id="statusBadge">
@@ -204,12 +204,12 @@
   <main class="messages" id="messages" role="log" aria-live="polite">
     <div class="msg-row bot">
       <div class="msg-avatar">
-        <img src="https://i.imgur.com/TWNG5QL.png" alt=""
-             onerror="this.style.display='none'; this.parentNode.textContent='🐾';">
+        <img src="https://i.imgur.com/erkEVyf.png" alt=""
+             onerror="this.style.display='none'; this.parentNode.textContent='👩‍🏫';">
       </div>
       <div class="bubble-wrap">
         <div class="bubble">
-          <p>¡Hola! Soy <strong>Bizcochuela</strong> 🐾</p>
+          <p>¡Hola! Soy <strong>Clara</strong> 👩‍🏫</p>
           <p>¿Con quién tengo el gusto?</p>
         </div>
       </div>
@@ -223,8 +223,8 @@
 
     <div class="typing-row" id="typingRow">
       <div class="msg-avatar">
-        <img src="https://i.imgur.com/TWNG5QL.png" alt=""
-             onerror="this.style.display='none'; this.parentNode.textContent='🐾';">
+        <img src="https://i.imgur.com/erkEVyf.png" alt=""
+             onerror="this.style.display='none'; this.parentNode.textContent='👩‍🏫';">
       </div>
       <div class="typing-dots" aria-hidden="true">
         <span></span><span></span><span></span>
@@ -247,14 +247,14 @@
       <span class="char-count" id="charCount" aria-live="polite"></span>
     </div>
     <div class="disclaimer">
-      Bizcochuela IA puede cometer errores. Verificá la información importante. Uso exclusivo para mayores de 18 años.
+      Clara IA puede cometer errores. Verificá la información importante. Uso exclusivo para mayores de 18 años.
     </div>
   </div>
 </div>
 </div>
 
 <script>
-const WORKER_URL     = 'https://bizcochuela.abfacundotorres.workers.dev';
+const WORKER_URL     = 'https://aulaclara.abfacundotorres.workers.dev';
 const MAX_CHARS      = 2000;
 const MAX_RETRY      = 2;
 const RETRY_BASE     = 1200;
@@ -531,7 +531,7 @@ async function generateWordDocument(rawContent) {
     }));
     allChildren.push(new Paragraph({
       children: [new TextRun({
-        text: `Generado por Bizcochuela IA · ${new Date().toLocaleDateString('es-AR')}`,
+        text: `Generado por Aula Clara · ${new Date().toLocaleDateString('es-AR')}`,
         size: 18, color: 'C47A3A', font: 'Arial', italics: true,
       })],
       spacing: { after: 320 },
@@ -695,8 +695,8 @@ function appendMessage(text, role) {
 
   if (role === 'bot') {
     const img = document.createElement('img');
-    img.src = 'https://i.imgur.com/TWNG5QL.png'; img.alt = '';
-    img.onerror = () => { img.style.display='none'; av.textContent='🐾'; };
+    img.src = 'https://i.imgur.com/erkEVyf.png'; img.alt = '';
+    img.onerror = () => { img.style.display='none'; av.textContent='👩‍🏫'; };
     av.appendChild(img);
   } else {
     av.innerHTML = '<svg style="width:15px;height:15px;fill:#C47A3A" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>';
@@ -853,8 +853,8 @@ async function sendMessage(text) {
     }
   } catch (err) {
     hideTyping();
-    const msgs = { rate_limit: 'Muchas consultas seguidas. Esperá un minuto 🐾', offline: 'Sin conexión. Revisá tu red 🐾' };
-    appendMessage(msgs[err.message] || (err.name==='AbortError' ? 'Tardó demasiado. Intentá de nuevo 🐾' : err.message.length < 120 ? err.message : 'Problema técnico. Intentá de nuevo 🐾'), 'bot');
+    const msgs = { rate_limit: 'Muchas consultas seguidas. Esperá un minuto 👩‍🏫', offline: 'Sin conexión. Revisá tu red 👩‍🏫' };
+    appendMessage(msgs[err.message] || (err.name==='AbortError' ? 'Tardó demasiado. Intentá de nuevo 👩‍🏫' : err.message.length < 120 ? err.message : 'Problema técnico. Intentá de nuevo 👩‍🏫'), 'bot');
   } finally {
     isLoading = false;
     sendBtn.disabled = inputEl.value.trim().length === 0;
